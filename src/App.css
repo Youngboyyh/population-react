@@ -1,38 +1,41 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .App {
+  text-align: center;
+} */
+h1{
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.checkBox{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  flex-wrap: wrap ;
+  width: 90%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 
-.App-link {
-  color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.checkBox label{
+  flex: 1 0 8%;
+}
+.checkBox label .input_con{
+  background-color:rgb(124, 181, 236);
+  width: 5%;
+  height: 20px;
+  border-radius: 5px;
+  color: azure;
+}
+@media screen and (max-width:991px) {
+  .checkBox label{
+    flex: 1 0 15%;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media screen and (max-width:600px) {
+  .checkBox label{
+    flex: 1 0 25%;
   }
 }

@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { useState } from 'react'
+import CheckBox from './components/CheckBox'
+import PopulationGrowth from './components/Charts'
 
-function App() {
+function App () {
+  const [prefCode, setPreCode] = useState(null)
+  const [prefName, setPrefName] = useState(null)
+  const getMsg = (msg1, msg2) => {
+    if (msg1 != null) {
+      setPreCode(msg1)
+      setPrefName(msg2)
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Title</h1>
+      <CheckBox getMsg={getMsg} />
+      <PopulationGrowth sendMsg={[prefCode, prefName]} />
     </div>
-  );
-}
 
-export default App;
+  )
+}
+export default App
