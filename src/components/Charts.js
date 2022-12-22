@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 const PopulationGrowth = (props) => {
   var msg1 = props.sendMsg[0]
   var msg2 = props.sendMsg[1] || "東京都"
+  var msg3 = props.sendMsg[2]
   // const [dataP, setDataP] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [prefList, setPrefList] = useState([13])
@@ -25,7 +26,7 @@ const PopulationGrowth = (props) => {
         setPrefList([...newList])
       }
     }
-  }, [msg1])
+  }, [msg3])
   const ischecked = (result) => {
     var data_copy = []
     var tem_obj = {}

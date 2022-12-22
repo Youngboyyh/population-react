@@ -27,7 +27,7 @@ const CheckBox = (props) => {
     } else {
       setSelectedOptions([...selectedOptions, option])
     }
-    props.getMsg(option, pref_name)
+    props.getMsg(option, pref_name, Math.random())
   }
   if (isLoading) {
     return (
