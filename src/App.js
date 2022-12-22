@@ -17,7 +17,7 @@ function App () {
 
   return (
     <div className="App">
-      <h1>都道府県別の総人口推移グラフ</h1>
+      <h2>都道府県別の総人口推移グラフ</h2>
       <CheckBox getMsg={getMsg} />
       <PopulationGrowth sendMsg={[prefCode, prefName, random]} />
     </div>
