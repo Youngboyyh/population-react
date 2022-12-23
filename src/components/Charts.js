@@ -13,8 +13,9 @@ const PopulationGrowth = (props) => {
   const [prefCode, setPrefCode] = useState(13)
   const [dataList, setDataList] = useState([])
   useEffect(() => {
-    if (msg1 !== null) {
+    if (msg2 !== null) {
       if (prefList.includes(msg1)) {
+        console.log("")
         const newList = prefList.filter(item => item != msg1)
         const newDataList = dataList.filter(item => item.name != msg2)
         setPrefList([...newList])
@@ -104,6 +105,7 @@ const PopulationGrowth = (props) => {
     },
     series: dataList
   }
+  console.log(dataList)
   return (
     <>
       <HighchartsReact highcharts={Highcharts} options={config}></HighchartsReact>
