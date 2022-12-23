@@ -12,10 +12,10 @@ const PopulationGrowth = (props) => {
   const [prefList, setPrefList] = useState([13])
   const [prefCode, setPrefCode] = useState(13)
   const [dataList, setDataList] = useState([])
+  const [prefN, setPrefN] = useState(null)
   useEffect(() => {
-    if (msg2 !== null) {
+    if (msg1 !== null) {
       if (prefList.includes(msg1)) {
-        console.log("")
         const newList = prefList.filter(item => item != msg1)
         const newDataList = dataList.filter(item => item.name != msg2)
         setPrefList([...newList])
@@ -25,6 +25,7 @@ const PopulationGrowth = (props) => {
         const newList = [...prefList, msg1]
         setPrefCode(msg1)
         setPrefList([...newList])
+        setPrefN(msg3)
       }
     }
   }, [msg3])
@@ -52,7 +53,7 @@ const PopulationGrowth = (props) => {
       setIsLoading(false)
     }
     fetchData()
-  }, [prefCode])
+  }, [prefCode, prefN])
   if (isLoading) {
     return (
       <div><h1>Loading...</h1></div>
@@ -105,7 +106,6 @@ const PopulationGrowth = (props) => {
     },
     series: dataList
   }
-  console.log(dataList)
   return (
     <>
       <HighchartsReact highcharts={Highcharts} options={config}></HighchartsReact>
