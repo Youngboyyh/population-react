@@ -1,7 +1,6 @@
-// import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
+
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
-// import { useState, useEffect } from 'react'
 
 
 const PopulationGrowth = (props) => {

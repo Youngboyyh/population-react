@@ -16,7 +16,7 @@ function App () {
     if (msg1 !== null) {
       if (prefList.includes(msg1)) {
         const newList = prefList.filter(item => item !== msg1)
-        const newDataList = dataList.filter(item => item.name != msg2)
+        const newDataList = dataList.filter(item => item.name !== msg2)
         console.log("NEWdatalist", newDataList)
         setPrefList([...newList])
         setDataList([...newDataList])
@@ -39,6 +39,7 @@ function App () {
     tem_obj = { name: prefName, data: data_copy }
     setDataList([...dataList, tem_obj])
   }
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${prefCode}`, {
