@@ -17,7 +17,6 @@ function App () {
       if (prefList.includes(msg1)) {
         const newList = prefList.filter(item => item !== msg1)
         const newDataList = dataList.filter(item => item.name !== msg2)
-        console.log("NEWdatalist", newDataList)
         setPrefList([...newList])
         setDataList([...newDataList])
       } else {
@@ -50,19 +49,16 @@ function App () {
         },
       })
       const result = await response.json()
-      // setDataP(result.result.data[0].data)
       ischecked(result.result.data[0].data)
       setIsLoading(false)
     }
     fetchData()
-  }, [prefCode, random, prefName])
-  //
-  console.log(dataList)
+  }, [random, prefName])
   return (
     <div className="App">
       <h2>都道府県別の総人口推移グラフ</h2>
       <CheckBox getMsg={getMsg} />
-      <PopulationGrowth sendMsg={[dataList, isLoading]} />
+      <PopulationGrowth sendMsg={dataList} />
     </div>
 
   )

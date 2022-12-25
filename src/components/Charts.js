@@ -1,71 +1,63 @@
+import React, { Component } from 'react'
+import Highcharts from 'highcharts'
 
-import Highcharts from "highcharts"
-import HighchartsReact from "highcharts-react-official"
+export default class chart extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-
-const PopulationGrowth = (props) => {
-  let dataList = props.sendMsg[0]
-  let isLoading = props.sendMsg[1]
-  console.log(dataList, isLoading)
-
-  if (isLoading) {
+  componentDidUpdate () {
+    const chart = Highcharts.chart('graph', {
+      title: {
+        text: '都道府県総人数',
+      },
+      xAxis: {
+        title: {
+          text: '年度'
+        },
+      },
+      yAxis: {
+        title: {
+          text: '総人数'
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+      },
+      plotOptions: {
+        series: {
+          animation: true,
+          label: {
+            connectorAllowed: false
+          },
+          pointStart: 1960,
+          pointInterval: 5
+        }
+      },
+      series: this.props.sendMsg,
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+    })
+  }
+  render () {
     return (
-      <div><h1>Loading...</h1></div>
+      <div>
+        <div id="graph"></div>
+      </div>
     )
   }
-  const config = {
-    chart: {
-      type: "line",
-    },
-    title: {
-      text: "都道府県別 総人口推移",
-    },
-    legend: {
-      layout: "vertical",
-      align: "right",
-      verticalAlign: "top",
-      itemMarginTop: 20,
-      itemStyle: {
-        fontSize: "15px",
-      },
-    },
-    plotOptions: {
-      series: {
-        label: {
-          connectorAllowed: false,
-        },
-        pointInterval: 5,
-        pointStart: 1960,
-      },
-    },
-    yAxis: {
-      labels: {
-        formatter: function () {
-          return this.value === 0 ? "" : this.value.toLocaleString() + "人"
-        },
-      },
-      min: 0,
-      gridLineColor: "transparent",
-      tickWidth: 1,
-      tickInterval: 500000,
-      lineWidth: 1,
-    },
-    xAxis: {
-      labels: {
-        formatter: function () {
-          return this.value + "年"
-        },
-      },
-      tickInterval: 5,
-    },
-    series: dataList,
-  }
-  return (
-    <>
-      <HighchartsReact highcharts={Highcharts} options={config}></HighchartsReact>
-    </>
-
-  )
 }
-
-export default PopulationGrowth
