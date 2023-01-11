@@ -20,9 +20,12 @@ const CheckBox = (props) => {
     }
     fetchData()
   }, [])
-  let isChechedBox = false
+  let t = null
   function handleChange (event, pref_name) {
-    if (!isChechedBox) {
+    if (t != null) {
+      clearTimeout(t)
+    }
+    t = setTimeout(() => {
       const option = Number(event.target.value)
       if (selectedOptions.includes(option)) {
         setSelectedOptions(selectedOptions.filter((o) => o !== option))
@@ -30,11 +33,8 @@ const CheckBox = (props) => {
         setSelectedOptions([...selectedOptions, option])
       }
       props.getMsg(option, pref_name, Math.random())
-      isChechedBox = true
-      setTimeout(function () {
-        isChechedBox = false
-      }, 500)
-    }
+    }, 500)
+
 
   }
   if (isLoading) {
